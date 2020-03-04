@@ -34,12 +34,15 @@ trait ArrayTrait {
 
     public function array_keys_exists(array $keys, array $array) : bool {
 
-        $return = false;
+        $badattempts = [];
 
-        if(!empty($keys) && !empty($array)) foreach($keys as $key)
-            if(!array_key_exists($key, $array)) : $return = false; break;
-            else : $return = true; endif;
+        foreach($keys as $key)
+            if(!array_key_exists($key, $array)) : $badattempts[] = $key;
 
-        return $return;
+        return empty($badattempts);
+    }
+
+    public function array_search_method(bool $onkey) : string {
+        return $onkey ? 'array_key_exists' : 'in_array';
     }
 }
