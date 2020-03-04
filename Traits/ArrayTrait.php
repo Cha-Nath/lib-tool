@@ -37,7 +37,7 @@ trait ArrayTrait {
         $badattempts = [];
 
         foreach($keys as $key)
-            if(!array_key_exists($key, $array)) : $badattempts[] = $key;
+            if(!array_key_exists($key, $array)) $badattempts[] = $key;
 
         return empty($badattempts);
     }
