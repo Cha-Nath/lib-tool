@@ -9,4 +9,9 @@ trait JsonTrait {
         return (json_last_error() == JSON_ERROR_NONE) ? $decoded : null;
     }
 
+    public function jsonResponse($response) : void {
+        header('Content-type: application/json');
+        echo json_encode($response);
+    }
+
 }

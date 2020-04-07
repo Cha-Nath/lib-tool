@@ -13,4 +13,11 @@ interface JsonTraitInterface {
      * @return null|mixed
      */
     public function _json_decode(string $json, bool $assoc = false, int $depth = 512, int $options = 0);
+
+    /**
+     *
+     * @param [type] $response
+     * @return void
+     */
+    public function jsonResponse($response);
 }
