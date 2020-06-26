@@ -4,12 +4,12 @@ namespace nlib\Tool\Traits;
 
 trait StringTrait {
 
-    public function str_slug(string $string, string $separator = '-') : string {
+    public function str_slug(string $string, string $separator = '-', bool $replaceSeparator = false) : string {
 
         $slug = '';
-
+    
         if($separator !== '-' && $separator !== '_') $separator = '-';
-
+    
         $array = [
             'À'=>'a', 'Á'=>'a', 'Â'=>'a', 'Ã'=>'a', 'Ä'=>'a', 
             'Å'=>'a', 'à'=>'a', 'á'=>'a', 'â'=>'a', 'ã'=>'a', 
@@ -23,12 +23,14 @@ trait StringTrait {
             'ù'=>'u', 'ú'=>'u', 'û'=>'u', 'ü'=>'u', 'Ý'=>'y', 
             'ý'=>'y', 'ÿ'=>'y'
         ];
+    
+        $s = ($replaceSeparator) ? '\-\_' : '';
         
         $slug = strtr($string, $array);
         $slug = strtolower($slug);
-        $slug = preg_replace('/([^a-z0-9]+)/i', $separator, $slug);
+        $slug = preg_replace('/([^a-z0-9' . $s . ']+)/i', $separator, $slug);
         $slug = trim($slug, $separator);
-
+    
         return $slug;
     }
 
