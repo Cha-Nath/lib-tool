@@ -16,7 +16,7 @@ trait ClassTrait {
 
         foreach($StdClass as $property => &$value) :
         
-            if(property_exists($Class, $method = 'set' . $property)) $Class->$method($value);
+            if(method_exists($Class, $method = 'set' . $property)) $Class->$method($value);
             else $Class->$property = &$value;
 
             unset($StdClass->$property);
