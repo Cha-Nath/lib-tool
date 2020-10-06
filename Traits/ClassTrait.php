@@ -7,7 +7,7 @@ use stdClass;
 
 trait ClassTrait {
 
-    function stdClass_recast($class, stdClass &$StdClass) {
+    public function stdClass_recast($class, stdClass &$StdClass) {
 
         if (!class_exists($class))
             throw new InvalidArgumentException(sprintf('Inexistant class %s.', $class));
