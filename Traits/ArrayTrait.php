@@ -45,4 +45,11 @@ trait ArrayTrait {
     public function array_search_method(bool $onkey) : string {
         return $onkey ? 'array_key_exists' : 'in_array';
     }
+
+    public function array_merge(array $defaults, array $values) : array {
+
+        foreach($values as $key => $value) $defaults[$key] = $value;
+
+        return $defaults;
+    }
 }
