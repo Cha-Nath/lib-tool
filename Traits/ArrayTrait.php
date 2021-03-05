@@ -52,4 +52,14 @@ trait ArrayTrait {
 
         return $defaults;
     }
+
+    public function array_key_last(array $array) {
+        end($array);
+        return key($array);
+    }
+
+    public function array_key_first(array $array) {
+        reset($array);
+        return key($array);
+    }
 }
