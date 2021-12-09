@@ -2,6 +2,8 @@
 
 namespace nlib\Tool\Traits;
 
+use DateTime;
+
 trait StringTrait {
 
     public function str_slug(string $string, string $separator = '-', bool $replaceSeparator = false) : string {
@@ -40,5 +42,13 @@ trait StringTrait {
         if(!empty($specialCharacters)) $alphabet .= '#%$';
         
         return substr(str_shuffle(str_repeat($alphabet, $length)), 0, $length);
+    }
+
+    public function str_token(int $length, bool $specialCharacters = false) : string {
+        
+        $length -= 6;
+        $token = $this->str_random($length, $specialCharacters) . (new DateTime('NOW'))->format('His');
+
+        return str_shuffle($token);
     }
 }
